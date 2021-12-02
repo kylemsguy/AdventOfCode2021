@@ -9,8 +9,6 @@ def part1(data):
 
 
 def part2(data):
-    with open("input") as infile:
-        data = [int(l.strip()) for l in infile.readlines() if l]
     count = 0
     part_sum = sum(data[0:3])
 
