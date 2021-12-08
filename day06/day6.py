@@ -1,3 +1,6 @@
+# Copyright 2021 Google LLC.
+# SPDX-License-Identifier: Apache-2.0
+
 def simulate(data, days):
     curr = data[:]
     for i in range(days):

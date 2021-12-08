@@ -1,3 +1,6 @@
+# Copyright 2021 Google LLC.
+# SPDX-License-Identifier: Apache-2.0
+
 def part1(data):
     curr_min = 1e99
     # print(min(data), max(data))

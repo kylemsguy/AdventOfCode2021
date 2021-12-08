@@ -1,3 +1,6 @@
+# Copyright 2021 Google LLC.
+# SPDX-License-Identifier: Apache-2.0
+
 class Board:
     def __init__(self, board):
         self.unmarked_sum = 0

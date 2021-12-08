@@ -1,3 +1,6 @@
+# Copyright 2021 Google LLC.
+# SPDX-License-Identifier: Apache-2.0
+
 def get_bit_score(data, idx):
     score = 0
     for val in data:
