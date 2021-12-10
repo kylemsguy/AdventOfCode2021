@@ -1,25 +1,27 @@
 # Copyright 2021 Google LLC.
 # SPDX-License-Identifier: Apache-2.0
 
-from collections import deque
-from functools import reduce
-
+close_map = {
+    '(': ')',
+    '[': ']',
+    '<': '>',
+    '{': '}',
+}
+invalid_score = {
+    ')': 3,
+    ']': 57,
+    '}': 1197,
+    '>': 25137,
+}
+completion_score = {
+    ')': 1,
+    ']': 2,
+    '}': 3,
+    '>': 4,
+}
 
 def score_corrupted(line):
     open_stack = []
-    close_map = {
-        '(': ')',
-        '[': ']',
-        '<': '>',
-        '{': '}',
-    }
-    invalid_score = {
-        ')': 3,
-        ']': 57,
-        '}': 1197,
-        '>': 25137,
-    }
-
     score = 0
 
     is_corrupted = False
@@ -37,18 +39,6 @@ def score_corrupted(line):
     
 def score_completion(line):
     open_stack = []
-    close_map = {
-        '(': ')',
-        '[': ']',
-        '<': '>',
-        '{': '}',
-    }
-    completion_score = {
-        ')': 1,
-        ']': 2,
-        '}': 3,
-        '>': 4,
-    }
 
     score = 0
     for c in line:
@@ -58,10 +48,7 @@ def score_completion(line):
             open_stack.pop()
         else:
             return 0
-    
-    # score = sum([completion_score[x] for x in open_stack])
-    # print(open_stack)
-    # print(''.join(open_stack[::-1]))
+
     while open_stack:
         score = score * 5 + completion_score[open_stack.pop()]
     return score
@@ -76,8 +63,6 @@ def part1(data):
 def part2(data):
     scores = []
     for line in data:
-        if score_corrupted(line) > 0:
-            continue
         score = score_completion(line)
         if score:
             scores.append(score)
