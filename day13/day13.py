@@ -1,12 +1,7 @@
 # Copyright 2021 Google LLC.
 # SPDX-License-Identifier: Apache-2.0
-
 import sys
 
-def print_grid(data):
-    for r in data:
-        print(''.join(str(x) for x in r))
-    print()
 
 def parse(data):
     dots = set()
@@ -21,6 +16,7 @@ def parse(data):
             x,y = l.split(",")
             dots.add((int(x), int(y)))
     return dots, instructions
+
 
 def fold(dots, instruction):
     axis, fold_line = instruction.split('=')
@@ -41,17 +37,6 @@ def fold(dots, instruction):
         # print(x, y, "->", newx, newy)
     return points
 
-def part1(dots, instructions):
-    # up, 655
-    # fold_line = 655
-    return len(fold(dots, instructions[0]))
-
-def part2(dots, instructions):
-    for i in instructions:
-        dots = fold(dots, i)
-    render_grid(dots)
-    return "See stderr"
-
 
 def render_grid(dots):
     max_x = max([x[0] for x in dots]) + 1
@@ -69,6 +54,17 @@ def render_grid(dots):
             else:
                 print('.', end=' ', file=sys.stderr)
         print(file=sys.stderr)
+
+
+def part1(dots, instructions):
+    return len(fold(dots, instructions[0]))
+
+
+def part2(dots, instructions):
+    for i in instructions:
+        dots = fold(dots, i)
+    render_grid(dots)
+    return "See stderr"
 
 
 if __name__ == "__main__":
