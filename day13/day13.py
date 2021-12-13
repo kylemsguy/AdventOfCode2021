@@ -52,7 +52,7 @@ def render_grid(dots):
             if grid[x][y]:
                 print("x", end=' ', file=sys.stderr)
             else:
-                print('.', end=' ', file=sys.stderr)
+                print(' ', end=' ', file=sys.stderr)
         print(file=sys.stderr)
 
 
