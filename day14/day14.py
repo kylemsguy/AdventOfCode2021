@@ -69,7 +69,7 @@ if __name__ == "__main__":
         rawdata = [x.strip() for x in infile.readlines() if x]
     data = parse(rawdata)
     # print(data)
-    print(">>>Day 13<<<")
+    print(">>>Day 14<<<")
     c = part1(*data)
     print(f"Part 1: {c}")
     c = part2(*data)
